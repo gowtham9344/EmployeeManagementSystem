@@ -1,0 +1,72 @@
+    .content-container {
+      text-align: center;
+      border: 2px solid #808080;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #949191;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .link-box {
+      margin-top: 10px;
+      background-color: #d1cdcd;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+
+    .link-box a {
+        text-decoration: none;
+        color: #ffffff;
+        transition: color 0.3s ease;
+      }
+      
+      .link-box a:hover {
+        color: #000000;
+      }
+
+      
+      .team-container {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      
+      .team-container a {
+        text-decoration: none;
+        color: #3498db;
+        margin-right: 10px;
+      }
+      
+      .team-container a:hover {
+        text-decoration: underline;
+      }
+
+      .header {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        padding-left: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #adadad;
+      }
+      
+      .back-button {
+        text-decoration: none;
+        color: #ffffff; 
+      }
+      
+      .add-employee {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 28px;
+        margin-right: 30px;
+      }
+      
+      .main-container {
+        width: 95%;
+      }
+      
+      

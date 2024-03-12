@@ -1,0 +1,70 @@
+<%= form_with model: @team, local: true do |form| %>
+
+  <% if @team.errors && @team.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@team.errors.count, "error") %> prohibited
+        this Team from being saved:
+      </h2>
+      <ul>
+        <% @team.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :manager_id, 'Select Manager' %><br>
+    <%= form.collection_select :manager_id, Employee.where('team_id IS NULL OR team_id = ?', @team.id), :id, :name, { include_blank: true }, { value_method: :id } %>
+  </p>
+
+ <p>
+  <%= form.label 'Select Employees' %><br>
+  <%= form.collection_check_boxes :employee_ids, Employee.where('team_id IS NULL OR team_id = ?', @team.id), :id, :name do |cb| %>
+    <%= cb.check_box %>
+    <%= cb.label %><br>
+  <% end %>
+ </p>
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+   <script>
+    
+      var initialEmployeeList = <%= raw Employee.where('team_id IS NULL OR team_id = ?', @team.id).to_json %>;
+
+      // Capture change event on manager dropdown
+      var managerSelect = document.getElementById('team_manager_id');
+      var employeeCheckboxes = document.querySelectorAll('[name="team[employee_ids][]"]');
+
+      managerSelect.addEventListener('change', function () {
+        // Get the selected manager's ID
+        var managerId = parseInt(this.value);
+
+        // Update the checkboxes and labels
+        employeeCheckboxes.forEach(function (checkbox) {
+          var employeeId = parseInt(checkbox.value);
+          checkbox.disabled = (employeeId === managerId);
+        });
+      });
+
+      
+      if(managerSelect.value != ""){
+          var managerId = parseInt(managerSelect.value);
+
+          employeeCheckboxes.forEach(function (checkbox) {
+            var employeeId = parseInt(checkbox.value);
+            checkbox.disabled = (employeeId === managerId);
+          });
+      }
+  </script>
+
+<% end %>

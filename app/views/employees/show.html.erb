@@ -1,0 +1,48 @@
+<p>
+  <strong>Name:</strong>
+  <%= @employee.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @employee.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @employee.address %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @employee.mobile %>
+</p>
+
+<% if @employee.team.present? %>
+  <p>
+    <strong>Team:</strong>
+    <%= @employee.team.name %>
+  </p>
+
+  <% if @employee.is_manager? %>
+    <p>
+      <strong>Role:</strong> You are the manager of this team.
+    </p>
+  <% else %>
+    <p>
+      <strong>Manager:</strong> 
+      <% if @employee.team.manager %>
+         <%= @employee.team.manager.name %>
+      <% else %>
+         Not assigned
+      <% end %>
+    </p>
+  <% end %>
+<% else %>
+  <p>
+    <strong>Team:</strong> You haven't been assigned to a team yet.
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<%= link_to 'Back', employees_path %>

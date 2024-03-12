@@ -1,0 +1,42 @@
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top:100px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+  }
+</style>
+
+<div class="header">
+    <%= link_to 'Back', controller: 'welcome', class: 'back-button' %>
+    <h1>Teams</h1>
+    <%= link_to '+', new_employee_path, class: 'add-employee' %>
+</div>
+
+
+<div class="main-container">
+  <% @teams.each do |team| %>
+    <div class="team-container">
+      <p><strong>Name:</strong> <%= team.name %></p>
+      <p><strong>Manager:</strong>
+        <% if team.manager %>
+          <%= team.manager.name %>
+        <% else %>
+          Not assigned
+        <% end %>
+      </p>
+      <p>
+        <%= link_to 'Show', team_path(team) %> |
+        <%= link_to 'Edit', edit_team_path(team) %> |
+        <%= link_to 'Destroy', team_path(team),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+      </p>
+    </div>
+  <% end %>
+</div>
