@@ -1,0 +1,22 @@
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top:100px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+  }
+</style>
+
+<div class="header">
+  <%= link_to(teams_path) do %>
+     <i class="bi bi-arrow-left-circle-fill back-button"></i> 
+  <% end %>
+  <h1>Teams - <%=@team.name%></h1>
+  <%= link_to edit_team_path(@team), class: "bi bi-pencil-square edit-team" do %>
+  <% end %>
+</div>

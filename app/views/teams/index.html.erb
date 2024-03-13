@@ -11,32 +11,36 @@
     color: #ffffff;
   }
 </style>
-
-<div class="header">
-    <%= link_to 'Back', controller: 'welcome', class: 'back-button' %>
-    <h1>Teams</h1>
-    <%= link_to '+', new_employee_path, class: 'add-employee' %>
-</div>
-
-
+<%= render 'header'%>
 <div class="main-container">
   <% @teams.each do |team| %>
-    <div class="team-container">
-      <p><strong>Name:</strong> <%= team.name %></p>
-      <p><strong>Manager:</strong>
-        <% if team.manager %>
-          <%= team.manager.name %>
-        <% else %>
-          Not assigned
-        <% end %>
-      </p>
-      <p>
-        <%= link_to 'Show', team_path(team) %> |
-        <%= link_to 'Edit', edit_team_path(team) %> |
-        <%= link_to 'Destroy', team_path(team),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %>
-      </p>
-    </div>
+    <a href="<%= team_path(team) %>" class="team-link">
+      <div class="team-container">
+        <div class="team-details">
+          <div class="detail">
+            <strong>Name:</strong> <%= team.name %>
+          </div>
+          <div class="detail">
+            <strong>Manager:</strong>
+            <% if team.manager %>
+              <%= team.manager.name %>
+            <% else %>
+              Not assigned
+            <% end %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= link_to edit_team_path(team),
+            class: "bi bi-pencil-square" do %>
+          <% end %>
+          <%= link_to team_path(team),
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "bi bi-trash3-fill" do %>
+          <% end %>
+        </div>
+      </div>
+    </a>
   <% end %>
 </div>
+

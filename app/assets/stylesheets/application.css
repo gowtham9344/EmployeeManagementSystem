@@ -19,7 +19,7 @@
         text-decoration: none;
         color: #ffffff;
         transition: color 0.3s ease;
-      }
+    }
       
       .link-box a:hover {
         color: #000000;
@@ -28,18 +28,43 @@
       
       .team-container {
         border: 1px solid #ccc;
+        border-radius: 20px;
         padding: 10px;
         margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        
       }
-      
-      .team-container a {
+
+      .team-link{
         text-decoration: none;
-        color: #3498db;
-        margin-right: 10px;
+        transition: color 0.3s ease;
+        filter: blur(0.48px);
+      }
+
+      .team-link:hover{
+        filter: none;
       }
       
-      .team-container a:hover {
-        text-decoration: underline;
+      
+      .team-details {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .detail {
+        margin-bottom: 5px;
+      }
+
+      .actions a {
+        margin-left: 10px;
+      }
+      
+       .team-container a {
+        text-decoration: none;
+        color : inherit;
       }
 
       .header {
@@ -55,18 +80,152 @@
       
       .back-button {
         text-decoration: none;
-        color: #ffffff; 
+        color: #ffffff;
+        font-size: 24px;
       }
-      
-      .add-employee {
+
+      .edit-team{
         text-decoration: none;
         color: #ffffff;
-        font-size: 28px;
+        font-size: 18px;
         margin-right: 30px;
+      }
+      
+      .add-team {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 24px;
+        margin-right: 30px;
+      }
+
+      .new-team {
+        color: #ffffff;
+        margin-right: 46vw;
       }
       
       .main-container {
         width: 95%;
       }
+
+      #error_explanation {
+        color: red;
+      }
       
+      #error_explanation h2 {
+        font-size: 18px;
+      }
+      
+      #error_explanation ul {
+        list-style-type: none;
+      }
+      
+      #error_explanation li {
+        margin-bottom: 5px;
+      }
+      
+      /* Style for form fields */
+      form {
+        margin-bottom: 20px;
+      }
+      
+      form p {
+        margin-bottom: 15px;
+      }
+      
+      form label {
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      
+      form input[type="text"],
+      form select,
+      form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      
+      /* Style for checkboxes */
+      form .collection_check_boxes label {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      
+      form .collection_check_boxes input[type="checkbox"] {
+        margin-right: 5px;
+      }
+
+      .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto; 
+      }
+
+      .center-container1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh; 
+      }
+      .center-container form {
+        width: 400px; /* Adjust the form width as needed */
+        height: 500px;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #ccc;
+        color:#000000;
+        overflow-y: auto; /* Add scroll if content overflows vertically */
+        box-shadow: 0 0 10px rgba(211, 211, 211, 0.5); /* Box shadow with light grey color */
+      }
+
+            /* Style for container */
+      .data-container {
+        width: 400px; /* Adjust the width as needed */
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #ccc;
+        color: #000000;
+        overflow-y: auto; /* Add scroll if content overflows vertically */
+        box-shadow: 0 0 10px rgba(211, 211, 211, 0.5); /* Box shadow with light grey color */
+      }
+
+      /* Style for paragraphs */
+      .data-container p {
+        margin-bottom: 15px;
+      }
+
+      /* Style for strong tags */
+      .data-container strong {
+        font-weight: bold;
+      }
+
+      .submit-button {
+        text-align: right;
+        padding-top: 20px; /* Adjust the padding as needed */
+      }
+      
+      .submit-button input[type="submit"] {
+        padding: 10px 20px; /* Adjust the padding as needed */
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      .submit-button input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      
+
+      
+      
+    
       

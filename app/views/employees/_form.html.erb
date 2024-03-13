@@ -1,18 +1,18 @@
-<%= form_with model: @employee, local: true do |form| %>
-
-  <% if @employee.errors && @employee.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@employee.errors.count, "error") %> prohibited
-        this employee from being saved:
-      </h2>
-      <ul>
-        <% @employee.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="center-container">
+  <%= form_with model: @employee, local: true do |form| %>
+    <% if @employee.errors && @employee.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@employee.errors.count, "error") %> prohibited
+          this employee from being saved:
+        </h2>
+        <ul>
+          <% @employee.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
   <p>
     <%= form.label :name %><br>
@@ -44,14 +44,20 @@
     <%= form.check_box :is_manager %>
   </p>
 
-  <p>
+  <p class="submit-button">
     <%= form.submit %>
   </p>
+  <% end %>
+  </div>
 
   <script>
       var teamSelect = document.getElementById('employee_team_id');
       var isManagerSection = document.getElementById('is-manager-section');
       var isManagerCheckbox = document.getElementById('employee_is_manager');
+
+      document.querySelectorAll('.add-team').forEach(function(element) {
+        element.style.display = 'none';
+      });
 
       teamSelect.addEventListener('change', function () {
         isManagerCheckbox.checked = false;
@@ -61,4 +67,5 @@
       isManagerSection.style.display = teamSelect.value ? 'block' : 'none';
   </script>
 
-<% end %>
+
+

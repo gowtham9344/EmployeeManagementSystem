@@ -1,27 +1,32 @@
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
+  <%= render 'header2'%>
+  <div class="center-container1">
+    <div class="data-container">
+        <p>
+          <strong>Name:</strong>
+          <%= @team.name %>
+        </p>
 
-<p>
-  <strong>Manager:</strong>
-  <% if @team.manager %>
-     <%= @team.manager.name %>
-  <% else %>
-      Not assigned
-  <% end %>
-</p>
+        <p>
+          <strong>Manager:</strong>
+          <% if @team.manager %>
+            <%= @team.manager.name %>
+          <% else %>
+              Not assigned
+          <% end %>
+        </p>
 
-<% if @team.employees.any? %>
-  <h2>Team Members</h2>
-  <ul>
-    <% @team.employees.each do |employee| %>
-      <li><%= employee.name %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>Currently, there are no members in this team.</p>
-<% end %>
+        <% if @team.employees.any? %>
+          <h2>Team Members</h2>
+          <ul>
+            <% @team.employees.each do |employee| %>
+              <li><%= employee.name %></li>
+              <br>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>Currently, there are no members in this team.</p>
+        <% end %>
+  </div>
+  </div>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+

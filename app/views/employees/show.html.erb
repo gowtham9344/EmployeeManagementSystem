@@ -1,48 +1,50 @@
-<p>
-  <strong>Name:</strong>
-  <%= @employee.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @employee.email %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @employee.address %>
-</p>
-
-<p>
-  <strong>Mobile:</strong>
-  <%= @employee.mobile %>
-</p>
-
-<% if @employee.team.present? %>
+<%= render 'header2'%>
+<div class="center-container1">
+  <div class="data-container">
   <p>
-    <strong>Team:</strong>
-    <%= @employee.team.name %>
+    <strong>Name:</strong>
+    <%= @employee.name %>
   </p>
 
-  <% if @employee.is_manager? %>
+  <p>
+    <strong>Email:</strong>
+    <%= @employee.email %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @employee.address %>
+  </p>
+
+  <p>
+    <strong>Mobile:</strong>
+    <%= @employee.mobile %>
+  </p>
+
+  <% if @employee.team.present? %>
     <p>
-      <strong>Role:</strong> You are the manager of this team.
+      <strong>Team:</strong>
+      <%= @employee.team.name %>
     </p>
+
+    <% if @employee.is_manager? %>
+      <p>
+        <strong>Role:</strong> He/She is the manager of this team 
+      </p>
+    <% else %>
+      <p>
+        <strong>Manager:</strong> 
+        <% if @employee.team.manager %>
+          <%= @employee.team.manager.name %>
+        <% else %>
+          Not assigned
+        <% end %>
+      </p>
+    <% end %>
   <% else %>
     <p>
-      <strong>Manager:</strong> 
-      <% if @employee.team.manager %>
-         <%= @employee.team.manager.name %>
-      <% else %>
-         Not assigned
-      <% end %>
+      <strong>Team:</strong> haven't been assigned to a team yet.
     </p>
   <% end %>
-<% else %>
-  <p>
-    <strong>Team:</strong> You haven't been assigned to a team yet.
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+ </div>
+ </div>
