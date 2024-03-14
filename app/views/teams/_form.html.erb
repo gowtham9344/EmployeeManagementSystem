@@ -21,14 +21,19 @@
 
     <p>
       <%= form.label :manager_id, 'Select Manager' %><br>
-      <%= form.collection_select :manager_id, Employee.where('team_id IS NULL OR team_id = ?', @team.id), :id, :name, { include_blank: true }, { value_method: :id } %>
+      <%= form.collection_select :manager_id, [OpenStruct.new(id: nil, name: "No one")] + Employee.where('team_id IS NULL OR team_id = ?', @team.id), :id, :name, { prompt: 'Select Manager' }, { value_method: :id } %>
     </p>
 
     <p>
-      <%= form.label 'Select Employees' %><br>
-      <%= form.collection_check_boxes :employee_ids, Employee.where('team_id IS NULL OR team_id = ?', @team.id), :id, :name do |cb| %>
-        <%= cb.check_box %>
-        <%= cb.label %><br>
+      <%= form.label 'Select Members' %><br>
+      <% employees = Employee.where('team_id IS NULL OR team_id = ?', @team.id) %>
+      <% if employees.any? %>
+        <%= form.collection_check_boxes :employee_ids, employees, :id, :name do |cb| %>
+          <%= cb.check_box %>
+          <%= cb.label %><br>
+        <% end %>
+      <% else %>
+        <p class="no-employee">No employees available.</p>
       <% end %>
     </p>
 
@@ -43,7 +48,6 @@
     
       var initialEmployeeList = <%= raw Employee.where('team_id IS NULL OR team_id = ?', @team.id).to_json %>;
 
-      // Capture change event on manager dropdown
       var managerSelect = document.getElementById('team_manager_id');
       var employeeCheckboxes = document.querySelectorAll('[name="team[employee_ids][]"]');
       document.querySelectorAll('.add-team').forEach(function(element) {
@@ -52,10 +56,9 @@
 
 
       managerSelect.addEventListener('change', function () {
-        // Get the selected manager's ID
+        
         var managerId = parseInt(this.value);
 
-        // Update the checkboxes and labels
         employeeCheckboxes.forEach(function (checkbox) {
           var employeeId = parseInt(checkbox.value);
           checkbox.disabled = (employeeId === managerId);

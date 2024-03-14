@@ -17,7 +17,7 @@
 
     .link-box a {
         text-decoration: none;
-        color: #ffffff;
+        color: #14127c;
         transition: color 0.3s ease;
     }
       
@@ -123,7 +123,6 @@
         margin-bottom: 5px;
       }
       
-      /* Style for form fields */
       form {
         margin-bottom: 20px;
       }
@@ -151,7 +150,6 @@
         box-sizing: border-box;
       }
       
-      /* Style for checkboxes */
       form .collection_check_boxes label {
         display: inline-block;
         margin-right: 10px;
@@ -174,45 +172,45 @@
         align-items: center;
         height: 80vh; 
       }
+      
+
       .center-container form {
-        width: 400px; /* Adjust the form width as needed */
+        width: 400px; 
         height: 500px;
         padding: 20px;
         border-radius: 8px;
         background-color: #ccc;
         color:#000000;
-        overflow-y: auto; /* Add scroll if content overflows vertically */
-        box-shadow: 0 0 10px rgba(211, 211, 211, 0.5); /* Box shadow with light grey color */
+        overflow-y: auto;
+        box-shadow: 0 0 10px rgba(211, 211, 211, 0.5);
       }
 
-            /* Style for container */
+
       .data-container {
-        width: 400px; /* Adjust the width as needed */
+        width: 400px; 
         padding: 20px;
         border-radius: 8px;
         background-color: #ccc;
         color: #000000;
-        overflow-y: auto; /* Add scroll if content overflows vertically */
-        box-shadow: 0 0 10px rgba(211, 211, 211, 0.5); /* Box shadow with light grey color */
+        overflow-y: auto; 
+        box-shadow: 0 0 10px rgba(211, 211, 211, 0.5); 
       }
 
-      /* Style for paragraphs */
       .data-container p {
         margin-bottom: 15px;
       }
 
-      /* Style for strong tags */
       .data-container strong {
         font-weight: bold;
       }
 
       .submit-button {
         text-align: right;
-        padding-top: 20px; /* Adjust the padding as needed */
+        padding-top: 20px; 
       }
       
       .submit-button input[type="submit"] {
-        padding: 10px 20px; /* Adjust the padding as needed */
+        padding: 10px 20px; 
         background-color: #007bff;
         color: #fff;
         border: none;
@@ -224,7 +222,13 @@
         background-color: #0056b3;
       }
       
-
+      .no-employee{
+        margin-left: auto;
+        margin-right: auto;
+        width:fit-content;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
       
       
     

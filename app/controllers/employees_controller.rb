@@ -14,7 +14,7 @@ class EmployeesController < ApplicationController
         if @employee.save
             if(@employee.is_manager)
                 if(@employee.team.manager)
-                    @employee.team.manager.is_manager = 0
+                    @employee.team.manager.is_manager = false
                     @employee.team.manager.save
                 end
                 @employee.team.manager_id = @employee.id
@@ -28,19 +28,29 @@ class EmployeesController < ApplicationController
 
     def update
         @employee = Employee.find(params[:id])
+        employee1 = Employee.find(params[:id])
+        employee2 = employee1.team ? employee1.team.manager : nil
+
+        if(@employee.team)
+            @employee.team.manager_id = nil
+            @employee.team.save
+        end
        
         if @employee.update(employee_params)
-            if(@employee.is_manager == 1)
-                if(@employee.team.manager)
-                    @employee.team.manager.is_manager = 0
+            if(@employee.is_manager == true)
+                if(employee2 && employee2.team_id == @employee.team_id)
+                    employee2.is_manager = 0
+                    employee2.save
+                elsif(@employee.team.manager)
+                    @employee.team.manager.is_manager = false
                     @employee.team.manager.save
                 end
                 @employee.team.manager_id = @employee.id
                 @employee.team.save
             else
-                if(@employee.team && @employee.team.manager && @employee.team.manager_id == @employee.id)
-                    @employee.team.manager_id = nil
-                    @employee.team.save
+                if(employee2 && @employee.id != employee2.id)
+                    employee1.team.manager_id = employee2.id
+                    employee1.team.save
                 end
             end
             redirect_to @employee

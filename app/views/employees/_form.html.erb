@@ -36,11 +36,11 @@
 
   <p>
     <%= form.label :team_id %><br>
-    <%= form.collection_select :team_id, Team.all, :id, :name, prompt: 'Select Team' %>
+    <%= form.collection_select :team_id, [OpenStruct.new(id: nil, name: "No Team")] + Team.all, :id, :name, prompt: 'Select Team' %>
   </p>
 
   <p id="is-manager-section" style="display: none;">
-    <%= form.label :is_manager %><br>
+    <%= form.label :is_manager %>
     <%= form.check_box :is_manager %>
   </p>
 
